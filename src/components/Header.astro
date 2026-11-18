@@ -6,7 +6,7 @@ const links = [
 ];
 ---
 
-<header class="border-b border-line bg-bg/90 backdrop-blur">
+<header data-site-header class="border-b border-line bg-bg/90 backdrop-blur">
 	<div class="container-page flex items-center justify-between gap-6 py-4">
 		<a href="/" class="group flex items-center gap-3" aria-label="BYTETEC — inicio">
 			<span
@@ -54,3 +54,62 @@ const links = [
 		</a>
 	</div>
 </header>
+
+<style>
+	@media (max-width: 767px) {
+		[data-site-header] {
+			position: sticky;
+			top: 0;
+			z-index: 50;
+			transition: transform 0.3s ease;
+		}
+
+		[data-site-header][data-nav-hidden] {
+			transform: translateY(-100%);
+		}
+	}
+
+	@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+		[data-site-header] {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	const header = document.querySelector<HTMLElement>("[data-site-header]");
+
+	if (header) {
+		const mobile = window.matchMedia("(max-width: 767px)");
+		let lastY = window.scrollY;
+		let ticking = false;
+
+		const update = () => {
+			ticking = false;
+			const y = window.scrollY;
+			const offset = header.offsetHeight;
+			const delta = y - lastY;
+
+			if (!mobile.matches || y <= offset) {
+				header.removeAttribute("data-nav-hidden");
+			} else if (Math.abs(delta) > 4) {
+				header.toggleAttribute("data-nav-hidden", delta > 0);
+			}
+
+			lastY = y;
+		};
+
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(update);
+				}
+			},
+			{ passive: true },
+		);
+
+		mobile.addEventListener("change", () => header.removeAttribute("data-nav-hidden"));
+	}
+</script>
