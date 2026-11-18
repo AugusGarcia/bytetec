@@ -1,0 +1,144 @@
+---
+import servicesImage from "../assets/services-hardware.png";
+
+const whatsapp = "https://wa.me/5493816222509";
+
+const services = [
+	{
+		number: "02",
+		title: "Sistemas & software",
+		body: "Instalación de Windows, Linux y macOS. Office y programas de diseño.",
+		tag: "SISTEMAS",
+	},
+	{
+		number: "03",
+		title: "Optimización & limpieza",
+		body: "Tu PC está lenta? Limpieza del sistema y eliminación de virus.",
+		tag: "OPTIMIZAR",
+	},
+	{
+		number: "04",
+		title: "Actualización de hardware",
+		body: "Más capacidad, más velocidad. Mejorá para seguir avanzando.",
+		tag: "ACTUALIZAR",
+	},
+	{
+		number: "05",
+		title: "Backup & recuperación",
+		body: "Resguardá tus datos importantes. Formateá con respaldo.",
+		tag: "RESPALDO",
+	},
+];
+---
+
+<section
+	id="servicios"
+	class="border-b border-line bg-bg"
+	aria-labelledby="servicios-title"
+>
+	<div class="container-page py-10 md:py-16" data-reveal-group>
+		<div class="grid gap-8 md:grid-cols-2 md:items-end">
+			<div class="flex flex-col gap-4">
+				<p
+					data-reveal
+					class="font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase"
+				>
+					01 / LO QUE HACEMOS
+				</p>
+				<h2
+					id="servicios-title"
+					data-reveal="mask"
+					class="font-display text-5xl leading-[0.9] italic uppercase"
+				>
+					<span class="block overflow-hidden">
+						<span class="block leading-[0.95]">NO CAMBIES DE EQUIPO.</span>
+					</span>
+					<span class="block overflow-hidden">
+						<span class="block leading-[0.95]">CAMBIÁ CÓMO RINDE.</span>
+					</span>
+				</h2>
+			</div>
+			<p
+				data-reveal
+				class="max-w-[60ch] text-base leading-relaxed text-muted md:justify-self-end"
+			>
+				De una PC que no arranca a un sistema que vuela. Encontramos la
+				solución que tu equipo necesita.
+			</p>
+		</div>
+
+		<div class="mt-12 grid gap-4 md:grid-cols-3">
+			<article
+				data-reveal
+				class="flex flex-col overflow-hidden border border-line bg-surface transition-colors duration-300 group hover:border-lime md:row-span-2"
+			>
+				<img
+					src={servicesImage.src}
+					width={servicesImage.width}
+					height={servicesImage.height}
+					alt="Mano enguantada con un destornillador trabajando sobre una motherboard"
+					loading="lazy"
+					class="h-56 w-full object-cover object-[center_40%] transition-transform duration-500 group-hover:scale-[1.03] md:h-auto md:min-h-64 md:flex-1"
+				/>
+				<div class="border-t border-line bg-surface-alt p-6">
+					<p class="font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase">
+						HARDWARE / 01
+					</p>
+					<h3 class="mt-3 text-2xl leading-tight text-text">
+						Volvé a encender tus ideas.
+					</h3>
+					<p class="mt-3 max-w-[60ch] text-base leading-relaxed text-muted">
+						Reparación y mantenimiento de PC, notebooks, PlayStation 3,
+						PlayStation 4 y Xbox.
+					</p>
+					<a
+						href={whatsapp}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="group mt-5 inline-flex items-center gap-1.5 text-base text-lime"
+					>
+						Consultar reparación
+						<span
+							aria-hidden="true"
+							class="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+							>↗</span
+						>
+					</a>
+				</div>
+			</article>
+
+			{
+				services.map((service) => (
+					<article
+						data-reveal
+						class="flex flex-col gap-3 border border-line bg-surface p-5 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-lime"
+					>
+						<div class="flex items-baseline justify-between font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint">
+							<span>{service.number}</span>
+							<span aria-hidden="true">↗</span>
+						</div>
+						<h3 class="text-lg leading-snug font-medium text-text">
+							{service.title}
+						</h3>
+						<p class="max-w-[60ch] text-base leading-relaxed text-muted">{service.body}</p>
+						<p class="mt-auto border-t border-line pt-3 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase">
+							{service.tag}
+						</p>
+					</article>
+				))
+			}
+		</div>
+
+		<div
+			data-reveal
+			class="mt-8 flex flex-col gap-2 border-t border-line pt-4 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase sm:flex-row sm:items-center sm:justify-between"
+		>
+			<p>¿NO SABÉS QUÉ LE PASA?</p>
+			<p>Contanos los síntomas. Nosotros nos ocupamos del resto.</p>
+		</div>
+	</div>
+</section>
+
+<script>
+	import "../scripts/reveal";
+</script>

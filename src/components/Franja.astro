@@ -1,0 +1,74 @@
+---
+const items = [
+	"PC · NOTEBOOKS",
+	"PLAYSTATION · XBOX",
+	"WINDOWS · LINUX · MACOS",
+	"SOPORTE REMOTO",
+];
+---
+
+<div class="overflow-hidden" data-reveal-group>
+	<div data-reveal="slide" class="bg-lime py-4 text-ink">
+		<div
+			data-marquee
+			class="flex w-max items-center font-mono text-[0.6875rem] font-medium tracking-[0.16em] whitespace-nowrap uppercase"
+		>
+			{
+				[0, 1].map((copy) => (
+					<div
+						class="flex min-w-[100vw] items-center justify-around gap-4 pr-4"
+						aria-hidden={copy === 0 ? undefined : "true"}
+					>
+						{items.map((item) => (
+							<>
+								<span>{item}</span>
+								<span class="text-ink/40" aria-hidden="true">
+									+
+								</span>
+							</>
+						))}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	import { animate, inView } from "motion";
+	import "../scripts/reveal";
+
+	const reducedMotion = window.matchMedia(
+		"(prefers-reduced-motion: reduce)",
+	).matches;
+	const track = document.querySelector<HTMLElement>("[data-marquee]");
+
+	if (track && !reducedMotion) {
+		const controls = animate(
+			track,
+			{ x: ["0%", "-50%"] },
+			{ duration: 50, ease: "linear", repeat: Infinity },
+		);
+
+		let visible = false;
+		controls.pause();
+
+		inView(
+			track,
+			() => {
+				visible = true;
+				controls.play();
+				return () => {
+					visible = false;
+					controls.pause();
+				};
+			},
+			{ amount: "some" },
+		);
+
+		track.addEventListener("pointerenter", () => controls.pause());
+		track.addEventListener("pointerleave", () => {
+			if (visible) controls.play();
+		});
+	}
+</script>

@@ -1,0 +1,56 @@
+---
+const links = [
+	{ href: "#servicios", label: "Servicios" },
+	{ href: "#como-trabajamos", label: "Cómo trabajamos" },
+	{ href: "#preguntas-frecuentes", label: "Preguntas frecuentes" },
+];
+---
+
+<header class="border-b border-line bg-bg/90 backdrop-blur">
+	<div class="container-page flex items-center justify-between gap-6 py-4">
+		<a href="/" class="group flex items-center gap-3" aria-label="BYTETEC — inicio">
+			<span
+				class="flex h-8 w-8 items-center justify-center border border-line text-lime transition-colors duration-300 group-hover:border-lime"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.2"
+					stroke-linecap="round"
+					class="h-6 w-6 text-lime"
+					aria-hidden="true"
+				>
+					<path d="M7.18 6.12A8.4 8.4 0 1 0 16.82 6.12" />
+					<path d="M12 2.6v8.2" />
+				</svg>
+			</span>
+			<span class="font-mono text-[0.75rem] font-medium tracking-[0.16em] text-text uppercase">BYTETEC</span>
+		</a>
+
+		<nav class="hidden items-center gap-8 md:flex" aria-label="Principal">
+			{
+				links.map((link) => (
+					<a
+						href={link.href}
+						class="relative font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-lime after:transition-[width] after:duration-300 hover:text-text hover:after:w-full"
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<a
+			href="#contacto"
+			class="group inline-flex items-center gap-2 bg-lime px-4 py-2 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-ink uppercase transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-8px_rgba(180,255,57,0.55)]"
+		>
+			Hablemos
+			<span
+				aria-hidden="true"
+				class="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+				>↗</span
+			>
+		</a>
+	</div>
+</header>

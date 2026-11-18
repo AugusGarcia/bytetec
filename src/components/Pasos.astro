@@ -1,0 +1,100 @@
+---
+const steps = [
+	{
+		number: "01",
+		title: "Nos escribís",
+		body: "Contanos qué le pasa a tu equipo por WhatsApp. Sin compromiso.",
+	},
+	{
+		number: "02",
+		title: "Lo revisamos",
+		body: "Evaluamos el problema y te explicamos la solución antes de avanzar.",
+	},
+	{
+		number: "03",
+		title: "Volvés a lo tuyo",
+		body: "Nos ocupamos de tu tecnología para que sigas creando, jugando o trabajando.",
+	},
+];
+
+const benefits = [
+	{
+		title: "GARANTÍA DE SERVICIO",
+		body: "Nos hacemos cargo de lo que hacemos.",
+	},
+	{
+		title: "ATENCIÓN PERSONALIZADA",
+		body: "Tu equipo no es un caso más.",
+	},
+	{
+		title: "RAPIDEZ Y CONFIANZA",
+		body: "Soluciones claras, de principio a fin.",
+	},
+];
+---
+
+<section
+	id="como-trabajamos"
+	class="border-b border-line bg-bg"
+	aria-labelledby="pasos-title"
+>
+	<div class="container-page py-10 md:py-16" data-reveal-group>
+		<p
+			data-reveal
+			class="font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase"
+		>
+			03 / ASÍ DE SIMPLE
+		</p>
+		<h2
+			id="pasos-title"
+			data-reveal="mask"
+			class="mt-4 font-display text-5xl leading-[0.9] italic uppercase"
+		>
+			<span class="block overflow-hidden">
+				<span class="block leading-[0.95]">MENOS VUELTAS.</span>
+			</span>
+			<span class="block overflow-hidden">
+				<span class="block leading-[0.95]">MÁS SOLUCIONES.</span>
+			</span>
+		</h2>
+
+		<div class="mt-12 grid gap-8 md:grid-cols-3" data-reveal="list">
+			{
+				steps.map((step) => (
+					<div class="flex gap-4">
+						<span class="font-display text-3xl leading-none italic text-lime">
+							{step.number}
+						</span>
+						<div class="flex flex-col gap-2">
+							<h3 class="text-lg leading-snug text-text">{step.title}</h3>
+							<p class="max-w-[60ch] text-base leading-relaxed text-muted">{step.body}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
+
+		<div class="mt-12 grid gap-4 md:grid-cols-3" data-reveal="list">
+			{
+				benefits.map((benefit) => (
+					<div
+						class="group flex flex-col gap-2 border border-line bg-surface px-5 py-4 transition-colors duration-300 hover:border-lime"
+					>
+						<p class="font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase">
+							<span
+								class="inline-block text-lime transition-transform duration-300 group-hover:scale-125"
+								>+</span
+							>
+							{benefit.title}
+						</p>
+						<p class="max-w-[60ch] text-base leading-relaxed text-muted">{benefit.body}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	import "../scripts/reveal";
+</script>

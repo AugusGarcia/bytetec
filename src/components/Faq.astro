@@ -1,0 +1,99 @@
+---
+const whatsapp = "https://wa.me/5493816222509";
+
+const faqs = [
+	{
+		question: "¿Qué equipos reparan?",
+		answer:
+			"Trabajamos con PC y notebooks. También realizamos mantenimiento de PlayStation 3, PlayStation 4 y Xbox.",
+	},
+	{
+		question: "¿Se puede resolver sin llevar el equipo?",
+		answer:
+			"Sí, para problemas de software ofrecemos soporte 100% remoto. Consultanos para saber si es la mejor opción para tu caso.",
+	},
+	{
+		question: "¿Pueden resguardar mis archivos?",
+		answer:
+			"Realizamos backup y recuperación de datos. Contanos qué necesitás proteger antes de hacer un formateo o una instalación.",
+	},
+	{
+		question: "¿La consulta tiene costo?",
+		answer:
+			"La consulta es sin compromiso. Escribinos y contanos qué le pasa a tu equipo para que podamos orientarte.",
+	},
+];
+---
+
+<section
+	id="preguntas-frecuentes"
+	class="border-b border-line bg-bg"
+	aria-labelledby="faq-title"
+>
+	<div
+		class="container-page grid gap-12 py-10 md:grid-cols-[1fr_1.6fr] md:gap-16 md:py-16"
+		data-reveal-group
+	>
+		<div class="flex flex-col gap-5 md:sticky md:top-8 md:self-start">
+			<p
+				data-reveal
+				class="font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-faint uppercase"
+			>
+				04 / DESPEJAMOS DUDAS
+			</p>
+			<h2
+				id="faq-title"
+				data-reveal="mask"
+				class="font-display text-5xl leading-[0.9] italic uppercase"
+			>
+				<span class="block overflow-hidden">
+					<span class="block leading-[0.95]">ANTES DE</span>
+				</span>
+				<span class="block overflow-hidden">
+					<span class="block leading-[0.95]">CONECTAR.</span>
+				</span>
+			</h2>
+			<p data-reveal class="mt-2 max-w-[60ch] text-base leading-relaxed text-muted">
+				¿Otra pregunta? Escribinos. Estamos para ayudarte.
+			</p>
+			<a
+				data-reveal
+				href={whatsapp}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group inline-flex w-fit items-center gap-1.5 text-base text-lime"
+			>
+				Hablemos por WhatsApp
+				<span
+					aria-hidden="true"
+					class="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+					>↗</span
+				>
+			</a>
+		</div>
+
+		<ul class="flex max-w-3xl flex-col border-b border-line" data-reveal="list">
+			{
+				faqs.map((faq, index) => (
+					<li class="border-t border-line">
+						<div class="flex gap-5 py-6">
+							<span class="font-mono text-[0.6875rem] leading-7 font-medium tracking-[0.16em] text-faint tabular-nums">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<div class="flex flex-col gap-2">
+								<p class="text-lg leading-snug text-text">{faq.question}</p>
+								<p class="max-w-[60ch] text-base leading-relaxed text-muted">
+									{faq.answer}
+								</p>
+							</div>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<script>
+	import "../scripts/reveal";
+</script>
