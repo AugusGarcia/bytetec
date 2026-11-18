@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import powerIcon from "../assets/power-icon.png";
 
 interface Props {
 	title?: string;
@@ -25,7 +26,7 @@ const {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta name="twitter:card" content="summary_large_image" />
-		<link rel="icon" type="image/png" href="/src/assets/power-icon.png" />
+		<link rel="icon" type="image/png" href={powerIcon.src} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
