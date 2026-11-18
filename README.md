@@ -28,9 +28,6 @@ src/
 └── styles/         global.css — tokens de diseño (@theme)
 ```
 
-El diseño y sus tokens viven en `DESIGN.md` y `src/styles/global.css`.
-Las convenciones de layout y de código están en `AGENTS.md`.
-
 ## Comandos
 
 | Comando | Acción |
